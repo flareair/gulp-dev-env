@@ -5,11 +5,25 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   concat = require('gulp-concat'),
   notify = require('gulp-notify'),
+  rename = require('gulp-rename'),
   livereload = require('gulp-livereload');
 
 
 gulp.task('styles', function() {
   return gulp.src('less/main.less')
     .pipe(less())
-    .pipe(gulp.dest('public/static/'));
+    .pipe(autoprefixer())
+    .pipe(minifycss())
+    .pipe(rename('styles.css'))
+    .pipe(gulp.dest('public/static/'))
+    .pipe(notify({ message: 'Styles task complete' }));
+});
+
+gulp.task('scripts', function() {
+  return gulp.src('js/**/*.js')
+    .pipe(concat('scripts.js'))
+    .pipe(gulp.dest('public/static/'))
+    .pipe(uglify())
+    .pipe(gulp.dest('public/static/'))
+    .pipe(notify({ message: 'Scripts task complete' }));
 });
