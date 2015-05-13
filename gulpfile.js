@@ -27,3 +27,7 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('public/static/'))
     .pipe(notify({ message: 'Scripts task complete' }));
 });
+
+gulp.task('default', function() {
+  gulp.start('styles', 'scripts');
+});
