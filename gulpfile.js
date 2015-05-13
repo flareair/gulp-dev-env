@@ -5,7 +5,8 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   concat = require('gulp-concat'),
   notify = require('gulp-notify'),
-  rename = require('gulp-rename');
+  rename = require('gulp-rename'),
+  connect = require('gulp-connect');
 
 
 gulp.task('styles', function() {
@@ -15,7 +16,8 @@ gulp.task('styles', function() {
     .pipe(minifycss())
     .pipe(rename('styles.css'))
     .pipe(gulp.dest('public/static/'))
-    .pipe(notify({ message: 'Styles task complete' }));
+    .pipe(notify({ message: 'Styles task complete' }))
+    .pipe(connect.reload());
 });
 
 gulp.task('scripts', function() {
@@ -24,16 +26,29 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('public/static/'))
     .pipe(uglify())
     .pipe(gulp.dest('public/static/'))
-    .pipe(notify({ message: 'Scripts task complete' }));
+    .pipe(notify({ message: 'Scripts task complete' }))
+    .pipe(connect.reload());
 });
 
-gulp.task('default', function() {
-  gulp.start('styles', 'scripts');
-});
 
 gulp.task('watch', function() {
 
   gulp.watch('less/**/*.less', ['styles']);
   gulp.watch('js/**/*.js', ['scripts']);
 
+});
+
+gulp.task('connect', function() {
+  connect.server({
+    root: 'public',
+    livereload: true
+  });
+});
+
+gulp.task('default', function() {
+  gulp.start('styles', 'scripts');
+});
+
+gulp.task('serve', function() {
+  gulp.start('connect', 'watch');
 });
