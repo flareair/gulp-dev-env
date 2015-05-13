@@ -4,7 +4,6 @@ var gulp = require('gulp'),
   minifycss = require('gulp-minify-css'),
   uglify = require('gulp-uglify'),
   concat = require('gulp-concat'),
-  notify = require('gulp-notify'),
   rename = require('gulp-rename'),
   connect = require('gulp-connect');
 
@@ -16,7 +15,6 @@ gulp.task('styles', function() {
     .pipe(minifycss())
     .pipe(rename('styles.css'))
     .pipe(gulp.dest('public/static/'))
-    .pipe(notify({ message: 'Styles task complete' }))
     .pipe(connect.reload());
 });
 
@@ -26,7 +24,6 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('public/static/'))
     .pipe(uglify())
     .pipe(gulp.dest('public/static/'))
-    .pipe(notify({ message: 'Scripts task complete' }))
     .pipe(connect.reload());
 });
 
