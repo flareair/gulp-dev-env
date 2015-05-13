@@ -31,3 +31,10 @@ gulp.task('scripts', function() {
 gulp.task('default', function() {
   gulp.start('styles', 'scripts');
 });
+
+gulp.task('watch', function() {
+
+  gulp.watch('less/**/*.less', ['styles']);
+  gulp.watch('js/**/*.js', ['scripts']);
+
+});
