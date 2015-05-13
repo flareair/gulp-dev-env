@@ -5,8 +5,7 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   concat = require('gulp-concat'),
   notify = require('gulp-notify'),
-  rename = require('gulp-rename'),
-  livereload = require('gulp-livereload');
+  rename = require('gulp-rename');
 
 
 gulp.task('styles', function() {
