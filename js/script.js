@@ -1,1 +1,1 @@
-alert('Gulp works!');
+console.log('Gulp works!');
