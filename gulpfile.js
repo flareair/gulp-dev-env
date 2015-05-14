@@ -35,12 +35,16 @@ gulp.task('html', function () {
 
 gulp.task('vendor-assets', function() {
   var scripts = gulp.src([
-    'bower_components/jquery/dist/jquery.min.js',
-    'bower_components/bootstrap/dist/js/bootstrap.min.js'
+      'bower_components/jquery/dist/jquery.min.js',
+      'bower_components/bootstrap/dist/js/bootstrap.min.js'
     ])
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest('public/static/'));
-  return scripts;
+
+  var faFonts = gulp.src(['bower_components/font-awesome/fonts/**/*'])
+    .pipe(gulp.dest('public/fonts'));
+
+  return merge(scripts, faFonts);
 });
 
 gulp.task('watch', function() {
