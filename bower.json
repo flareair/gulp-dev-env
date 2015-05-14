@@ -1,0 +1,22 @@
+{
+  "name": "gulp_dev_env",
+  "version": "0.0.0",
+  "authors": [
+    "flareair <flareair0@gmail.com>"
+  ],
+  "description": "gulp dev enviroment",
+  "license": "MIT",
+  "homepage": "no",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "font-awesome": "~4.3.0"
+  }
+}
