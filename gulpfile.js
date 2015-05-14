@@ -5,7 +5,8 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   concat = require('gulp-concat'),
   rename = require('gulp-rename'),
-  connect = require('gulp-connect');
+  connect = require('gulp-connect'),
+  merge = require('gulp-merge');
 
 
 gulp.task('styles', function() {
